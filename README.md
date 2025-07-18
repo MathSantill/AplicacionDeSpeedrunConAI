@@ -1,25 +1,30 @@
-# AplicacionDeSpeedrunConAI
+# 🚀 AplicacionDeSpeedrunConAI
 
-Infraestructura del proyecto
+Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprendizaje por refuerzo (RL).
 
-Motor del videojuego
-Utiliza Godot Engine 4.x, preferiblemente la versión 4.2 o superior.
+## 🔧 Instalación y Configuración
 
-Lenguaje de programación recomendado:
-GDScript, aunque también puedes usar C# si deseas integraciones más complejas. GDScript es más directo y nativo en el entorno Godot.
+### Prerrequisitos
+| Herramienta | Versión mínima | Enlace de descarga |
+|-------------|----------------|-------------------|
+| Godot Engine | 4.2 | [Descargar](https://godotengine.org/download) |
+| Python | 3.10 | [Instalador](https://www.python.org/downloads/) |
+| Git | 2.30+ | [Instalador](https://git-scm.com/downloads) |
+| VSCode (Opcional) | 1.75+ | [Descargar](https://code.visualstudio.com/) |
 
-Aprendizaje por refuerzo (RL)
-Lenguaje de implementación: Python 3.10 o superior.
+### 🔄 Configuración del entorno virtual de Python
+```bash
+# Clonar repositorio
+git clone https://github.com/MathSantill/AplicacionDeSpeedrunConAI.git
+cd AplicacionDeSpeedrunConAI
 
-Frameworks sugeridos para RL
-Stable-Baselines3 para implementar algoritmos como PPO (Proximal Policy Optimization) y DQN (Deep Q-Network).
+# Crear y activar entorno virtual (Windows)
+python -m venv .venv
+.venv\Scripts\activate
 
-Comunicación entre Godot y Python (IA)
-Implementa una API REST en Python utilizando Flask o FastAPI.
-
-Desde Godot, puedes usar la clase HTTPRequest para enviar datos del estado del juego (posición, velocidad, colisiones, eventos) al servidor Python.
-
-El servidor responderá con la acción que el agente debe realizar.
+# Crear y activar entorno virtual (Linux/macOS)
+python -m venv .venv
+source .venv/bin/activate
 
 Se recomienda estructurar los datos en formato JSON para facilidad de parsing y flexibilidad.
 
