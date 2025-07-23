@@ -47,6 +47,8 @@ GitLens: para gestión avanzada de control de versiones dentro del editor.
 
 REST Client: para probar manualmente los endpoints de la API REST entre Godot y Python.
 
+bash```
+
 
 Arquitectura Implementada
 Visión General
