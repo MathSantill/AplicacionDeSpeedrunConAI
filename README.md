@@ -1,5 +1,7 @@
 # 🚀 AplicacionDeSpeedrunConAI
 
+<img width="950" height="537" alt="Screenshot 2025-07-26 194201" src="https://github.com/user-attachments/assets/d5b357c9-9f42-4135-92ad-3ee9729bc896" />
+
 Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprendizaje por refuerzo (RL).
 
 ## 🔧 Instalación y Configuración
