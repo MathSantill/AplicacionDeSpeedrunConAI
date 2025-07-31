@@ -125,21 +125,4 @@ source .venv/bin/activate
 
 Se recomienda estructurar los datos en formato JSON para facilidad de parsing y flexibilidad.
 
-
 GitHub + GitHub Actions: para control de versiones, integración continua y automatización del despliegue.
-
-Configuración del entorno local
-Herramientas obligatorias a instalar en tu máquina local
-
-Godot Engine 4.x
-Python 3.10 o superior
-Git
-Cuenta en GitHub y Git configurado en tu máquina
-Editor de código recomendado: Visual Studio Code o PyCharm
-Extensiones recomendadas para Visual Studio Code
-
-Python: para soporte de sintaxis, ejecución de scripts y depuración.
-
-GitLens: para gestión avanzada de control de versiones dentro del editor.
-
-REST Client: para probar manualmente los endpoints de la API REST entre Godot y Python.
