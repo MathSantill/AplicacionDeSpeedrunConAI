@@ -1,0 +1,7 @@
+res://default_env.tres
+res://Levels/ai_controller_2d.gd
+res://Levels/area_2d.gd
+res://Levels/damage_area_2d.gd
+res://Scripts/Player.gd
+res://Levels/spawn_point.gd
+res://Levels/DemoLevel.tscn
