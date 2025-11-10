@@ -14,6 +14,20 @@ Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprend
 | Git | 2.30+ | [Instalador](https://git-scm.com/downloads) |
 | VSCode (Opcional) | 1.75+ | [Descargar](https://code.visualstudio.com/) |
 
+```bash
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+.\rl\Scripts\Activate.ps1
+
+
+py stable_baselines3_example.py `
+  --save_model_path models/ppo_godot `
+  --save_checkpoint_frequency 10000 `
+  --linear_lr_schedule `
+  --speedup 10 `
+  --experiment_dir logs/sb3 `
+  --experiment_name experiment_platformer `
+  --timesteps 1000000
+```
 
 ### Arquitectura Implementada
 Visión General
