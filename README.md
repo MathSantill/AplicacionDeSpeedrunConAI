@@ -17,8 +17,8 @@ Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprend
 ```bash
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 .\rl\Scripts\Activate.ps1
-
-
+```
+```bash
 py stable_baselines3_example.py `
   --save_model_path models/ppo_godot `
   --save_checkpoint_frequency 10000 `
