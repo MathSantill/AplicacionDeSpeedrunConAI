@@ -1,8 +1,7 @@
-extends Marker2D
+extends Node2D
 class_name SpawnPoint
 
-@export var spawn_id: int = 1     # 1 = Spawn1, 2 = Spawn2
-@export var y_lift: float = 4.0   # para colocarlo un poco por encima del suelo
+@export var spawn_id: int = 1
 
 func get_spawn_position() -> Vector2:
-	return global_position + Vector2(0, -y_lift)
+	return global_position

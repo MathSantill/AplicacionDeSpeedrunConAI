@@ -5,69 +5,89 @@ enum ControlModes { INHERIT_FROM_SYNC, HUMAN, TRAINING, ONNX_INFERENCE, RECORD_E
 
 @export var control_mode: ControlModes = ControlModes.TRAINING
 @export var onnx_model_path: String = ""
-@export var reset_after: int = 2000
-@export var policy_name: String = "shared_policy"   # <- lo usa sync.gd
+@export var reset_after: int = 1000
 
-# Rutas opcionales (si están vacías hay autodetección)
 @export var player_path: NodePath
-@export var goal1_path: NodePath
-@export var goal2_path: NodePath
-
+@export var goal_path: NodePath
 @export var death_y: float = 2000.0
 
-# Estado RL
-var done := false
-var reward := 0.0
-var n_steps := 0
-var needs_reset := false
-var heuristic := "human"
+@export_group("Record expert demos mode")
+@export var expert_demo_save_path: String
+@export var remove_last_episode_key: InputEvent
+@export var action_repeat: int = 1
 
-var _action := {"move": 0, "jump": false, "dash": false}
+@export_group("Multi-policy mode")
+@export var policy_name: String = "shared_policy"
 
+var done: bool = false
+var reward: float = 0.0
+var n_steps: int = 0
+var needs_reset: bool = false
+var heuristic: String = "human"
+
+var _action: Dictionary = {"move": 0, "jump": false, "dash": false}
 var _player: CharacterBody2D
-var _goal1: Area2D
-var _goal2: Area2D
-var _current_goal: Area2D
-var _prev_goal_dist := INF
-var _goal1_reached := false
-var _goal2_reached := false
+var _goal: Area2D
+
+var _goal_reached: bool = false
+var _prev_goal_dist: float = INF
+
+# ⭐ NUEVO: seguimiento de vida/daño
+var _last_hp: int = 0
+var _took_damage: bool = false
 
 func _ready() -> void:
+	process_priority = -10
 	add_to_group("AGENT")
-	_player = _resolve_player()
-	if _player and _player.has_signal("died"):
-		if not _player.is_connected("died", Callable(self, "_on_player_died")):
-			_player.connect("died", Callable(self, "_on_player_died"))
 
-	_goal1 = _resolve_goal(goal1_path, 1)
-	_goal2 = _resolve_goal(goal2_path, 2)
+	# --- PLAYER ---
+	if player_path != NodePath(""):
+		_player = get_node_or_null(player_path) as CharacterBody2D
+	if _player == null:
+		_player = _autodetect_player()
+	if _player and _player.has_signal("died") and not _player.is_connected("died", Callable(self, "_on_player_died")):
+		_player.connect("died", Callable(self, "_on_player_died"))
 
-	if _goal1 and _goal1.has_signal("goal_reached") and not _goal1.is_connected("goal_reached", Callable(self, "_on_goal1_reached")):
-		_goal1.connect("goal_reached", Callable(self, "_on_goal1_reached"))
-	if _goal2 and _goal2.has_signal("goal_reached") and not _goal2.is_connected("goal_reached", Callable(self, "_on_goal2_reached")):
-		_goal2.connect("goal_reached", Callable(self, "_on_goal2_reached"))
+	# ⭐ guardar vida inicial si existe
+	if _player and "hp" in _player:
+		_last_hp = int(_player.hp)
 
-	_current_goal = _goal1
-	_reset_goal_distance_cache()
+	# --- GOAL ---
+	if goal_path != NodePath(""):
+		_goal = get_node_or_null(goal_path) as Area2D
+	if _goal == null:
+		_goal = _autodetect_goal()
+	if _goal:
+		if _goal.has_signal("player_reached_goal"):
+			if not _goal.is_connected("player_reached_goal", Callable(self, "_on_goal_reached")):
+				_goal.connect("player_reached_goal", Callable(self, "_on_goal_reached"))
+		else:
+			if not _goal.is_connected("body_entered", Callable(self, "_on_goal_body_entered")):
+				_goal.connect("body_entered", Callable(self, "_on_goal_body_entered"))
 
-func init(player: CharacterBody2D) -> void:
-	_player = player
 	_reset_goal_distance_cache()
 
 func _physics_process(_delta: float) -> void:
+	# Contador de pasos y check de muerte
 	n_steps += 1
 	if n_steps > reset_after:
 		needs_reset = true
-	if _player and _player.position.y > death_y:
-		done = true
 
-	if heuristic == "human" or control_mode == ControlModes.HUMAN or control_mode == ControlModes.RECORD_EXPERT_DEMOS:
-		_set_action_from_input()
-		_apply_action_to_player(_action)
-	else:
-		_apply_action_to_player(_action)
+	if _player:
+		if _player.position.y > death_y:
+			done = true
 
-# ========== API para sync.gd ==========
+		# ⭐ Detectar daño por cambio en hp
+		if "hp" in _player:
+			var current_hp: int = int(_player.hp)
+			if current_hp < _last_hp:
+				_took_damage = true      # castigaremos en get_reward()
+			_last_hp = current_hp
+
+	# 🔥 CLAVE: SIEMPRE aplicamos la última acción recibida
+	_apply_action_to_player(_action)
+
+# ───────── API sync.gd / Python ─────────
 func get_info() -> Dictionary:
 	return {
 		"observation_space": get_obs_space(),
@@ -78,136 +98,166 @@ func get_info() -> Dictionary:
 
 func get_obs() -> Dictionary:
 	if _player == null:
-		return {"obs": [0,0,0,0,0,0]}
-	var on_floor := 1.0 if _player.is_on_floor() else 0.0
-	var can_dash := 1.0 if ("canDash" in _player and _player.canDash) else 0.0
-	return {"obs":[
-		_player.position.x, _player.position.y,
-		_player.velocity.x, _player.velocity.y,
-		on_floor, can_dash
-	]}
+		return {"obs": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
 
-func get_obs_space() -> Dictionary: return {"obs":{"size":[6], "space":"box"}}
+	var on_floor: float = 1.0 if _player.is_on_floor() else 0.0
+	var can_dash: float = 1.0
+	if "canDash" in _player:
+		can_dash = 1.0 if _player.canDash else 0.0
+
+	return {
+		"obs": [
+			_player.position.x,
+			_player.position.y,
+			_player.velocity.x,
+			_player.velocity.y,
+			on_floor,
+			can_dash
+		]
+	}
+
+func get_obs_space() -> Dictionary:
+	var obs: Dictionary = get_obs()
+	var arr: Array = obs["obs"]
+	return {
+		"obs": {
+			"size": [arr.size()],
+			"space": "box"
+		}
+	}
+
 func get_action_space() -> Dictionary:
 	return {
-		"move":{"size":3,"action_type":"discrete"},
-		"jump":{"size":2,"action_type":"discrete"},
-		"dash":{"size":2,"action_type":"discrete"}
+		"move": {"size": 3, "action_type": "discrete"},
+		"jump": {"size": 2, "action_type": "discrete"},
+		"dash": {"size": 2, "action_type": "discrete"}
 	}
 
 func set_action(action: Dictionary = {}) -> void:
+	# Lo llama sync.gd con move ya mapeado a -1,0,1
 	if action.is_empty():
-		_set_action_from_input()
-	else:
-		_action = {
-			"move": action.get("move", 0),
-			"jump": action.get("jump", false),
-			"dash": action.get("dash", false)
-		}
+		return
+	var mv: int = clampi(int(action.get("move", 0)), -1, 1)
+	var j: bool = bool(action.get("jump", false))
+	var d: bool = bool(action.get("dash", false))
+	_action = {"move": mv, "jump": j, "dash": d}
+	# print("[AIController] set_action desde Python:", _action)
 
-func get_action() -> Dictionary: return _action.duplicate()
+func get_action() -> Dictionary:
+	return _action.duplicate()
 
+# ───────── RECOMPENSAS ─────────
 func get_reward() -> float:
-	var r := 0.0
+	var r: float = 0.0
+
 	if _player:
+		# 1) Avanzar hacia la derecha
 		r += _player.velocity.x / 500.0
-		if _current_goal:
-			var d := _current_goal.global_position.distance_to(_player.global_position)
+
+		# 2) Acercarse al GOAL
+		if _goal:
+			var d: float = _goal.global_position.distance_to(_player.global_position)
 			if is_finite(_prev_goal_dist):
 				r += clampf((_prev_goal_dist - d) / 100.0, -0.05, 0.05)
 			_prev_goal_dist = d
-		r -= 0.001
+
+		# 3) Penalización por tiempo (un poco más alta)
+		r -= 0.005
+
+		# 4) Penalización por caer
 		if _player.position.y > death_y:
 			r -= 3.0
 			done = true
 
-	if _goal1_reached:
-		r += 2.5
-		_goal1_reached = false
-		_current_goal = _goal2
-		_reset_goal_distance_cache()
+		# 5) Penalización por recibir daño (DamageArea2D)
+		if _took_damage:
+			r -= 2.0     # aquí puedes ajustar la severidad
+			_took_damage = false
 
-	if _goal2_reached:
-		r += 7.5
-		_goal2_reached = false
+	# 6) Recompensa por llegar al GOAL
+	if _goal_reached:
+		r += 8.0        # más recompensa por terminar el episodio
+		_goal_reached = false
 		done = true
 
 	return r
 
-func get_done() -> bool: return done
-func set_done_false() -> void: done = false
-func zero_reward() -> void: reward = 0.0
+func get_done() -> bool:
+	return done
+
+func set_done_false() -> void:
+	done = false
+
+func zero_reward() -> void:
+	reward = 0.0
 
 func reset() -> void:
 	n_steps = 0
 	reward = 0.0
 	needs_reset = false
 	done = false
-	_goal1_reached = false
-	_goal2_reached = false
-	_current_goal = _goal1
+	_goal_reached = false
+	_took_damage = false
 	_reset_goal_distance_cache()
 
-func set_heuristic(h: String) -> void: heuristic = h
+	# ⭐ resetear hp de referencia
+	if _player and "hp" in _player:
+		_last_hp = int(_player.hp)
 
-# ========== Internas ==========
-func _set_action_from_input() -> void:
-	var mv := 0
-	if Input.is_action_pressed("right"): mv = 1
-	elif Input.is_action_pressed("left"): mv = -1
-	_action = {"move":mv, "jump":Input.is_action_just_pressed("jump"), "dash":Input.is_action_just_pressed("dash")}
-
+# ───────── Aplicar acción al Player ─────────
 func _apply_action_to_player(action: Dictionary) -> void:
-	if _player == null: return
-	var mv := int(clamp(action.get("move", 0), -1, 1))
-	var j := bool(action.get("jump", false))
-	var d := bool(action.get("dash", false))
+	if _player == null:
+		return
+
+	var mv: int = int(clamp(action.get("move", 0), -1, 1))
+	var j: bool = bool(action.get("jump", false))
+	var d: bool = bool(action.get("dash", false))
+
 	if _player.has_method("apply_ai_action"):
 		_player.apply_ai_action(mv, j, d)
 	else:
-		# Fallback por si alguna vez quitas el método
-		if "movementInput" in _player.get_property_list().map(func(p): return p.name):
-			_player.set("movementInput", mv)
-		if "isJumpPressed" in _player.get_property_list().map(func(p): return p.name):
-			_player.set("isJumpPressed", j)
-		if "isDashPressed" in _player.get_property_list().map(func(p): return p.name):
-			_player.set("isDashPressed", d)
+		if "movementInput" in _player:
+			_player.movementInput = mv
+		if "isJumpPressed" in _player:
+			_player.isJumpPressed = j
+		if "isDashPressed" in _player:
+			_player.isDashPressed = d
 
-func _resolve_player() -> CharacterBody2D:
-	if player_path != NodePath(""):
-		var p := get_node_or_null(player_path)
-		if p is CharacterBody2D: return p
-	var root := get_tree().current_scene
-	if root:
-		for c in root.get_children():
-			if c is CharacterBody2D: return c
+# ───────── Autodetección / señales / utils ─────────
+func _autodetect_player() -> CharacterBody2D:
+	var root: Node = get_tree().current_scene
+	if root == null:
+		return null
+	for n in root.get_children():
+		if n is CharacterBody2D:
+			return n
 	return null
 
-func _resolve_goal(p: NodePath, want_index: int) -> Area2D:
-	if p != NodePath(""):
-		var g := get_node_or_null(p)
-		if g is Area2D: return g
-	var root := get_tree().current_scene
-	if root:
-		var candidates: Array[Area2D] = []
-		for c in root.get_children():
-			if c is Area2D and c.name.to_lower().begins_with("goal_area_2d"):
-				candidates.append(c)
-		if candidates.size() >= want_index: return candidates[want_index-1]
-	if root:
-		for c in root.get_children():
-			if c is Area2D:
-				for k in c.get_children():
-					if k is CollisionShape2D: return c
+func _autodetect_goal() -> Area2D:
+	var root: Node = get_tree().current_scene
+	if root == null:
+		return null
+	var group := get_tree().get_nodes_in_group("GOAL")
+	if group.size() > 0 and group[0] is Area2D:
+		return group[0]
+	for n in root.get_children():
+		if n is Area2D:
+			return n
 	return null
 
-# Señales
-func _on_goal1_reached() -> void: _goal1_reached = true
-func _on_goal2_reached() -> void: _goal2_reached = true
-func _on_player_died() -> void: reward -= 3.0; done = true
+func _on_goal_reached(_player_node: Node = null) -> void:
+	_goal_reached = true
+
+func _on_goal_body_entered(body: Node) -> void:
+	if _player and body == _player:
+		_goal_reached = true
+
+func _on_player_died() -> void:
+	reward -= 3.0
+	done = true
 
 func _reset_goal_distance_cache() -> void:
-	if _player and _current_goal:
-		_prev_goal_dist = _current_goal.global_position.distance_to(_player.global_position)
+	if _player and _goal:
+		_prev_goal_dist = _goal.global_position.distance_to(_player.global_position)
 	else:
 		_prev_goal_dist = INF

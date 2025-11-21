@@ -2,8 +2,6 @@
 
 <img width="950" height="537" alt="Screenshot 2025-07-26 194201" src="https://github.com/user-attachments/assets/d5b357c9-9f42-4135-92ad-3ee9729bc896" />
 
-[![](https://markdown-videos.deta.dev/youtube/BMqF3_rKCw8)](https://youtu.be/BMqF3_rKCw8)
-
 Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprendizaje por refuerzo (RL).
 
 ## 🔧 Instalación y Configuración
@@ -16,20 +14,6 @@ Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprend
 | Git | 2.30+ | [Instalador](https://git-scm.com/downloads) |
 | VSCode (Opcional) | 1.75+ | [Descargar](https://code.visualstudio.com/) |
 
-```bash
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-.\rl\Scripts\Activate.ps1
-```
-```bash
-py stable_baselines3_example.py `
-  --save_model_path models/ppo_godot `
-  --save_checkpoint_frequency 10000 `
-  --linear_lr_schedule `
-  --speedup 10 `
-  --experiment_dir logs/sb3 `
-  --experiment_name experiment_platformer `
-  --timesteps 1000000
-```
 
 ### Arquitectura Implementada
 Visión General

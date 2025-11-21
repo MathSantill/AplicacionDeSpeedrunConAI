@@ -12,7 +12,7 @@ config_version=5
 
 config/name="PlatformerTemplate(v2)"
 run/main_scene="res://Levels/DemoLevel.tscn"
-config/features=PackedStringArray("4.5")
+config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
 [display]
@@ -68,7 +68,7 @@ right={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.988235, 0.870588, 0.745098, 1)
+environment/defaults/default_clear_color=Color(0.514646, 0.797975, 1, 1)
 environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
