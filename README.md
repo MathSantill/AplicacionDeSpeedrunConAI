@@ -2,6 +2,9 @@
 
 <img width="950" height="537" alt="Screenshot 2025-07-26 194201" src="https://github.com/user-attachments/assets/d5b357c9-9f42-4135-92ad-3ee9729bc896" />
 
+[![Demo del proyecto](https://img.youtube.com/vi/BMqF3_rKCw8/0.jpg)](https://www.youtube.com/watch?v=BMqF3_rKCw8)
+
+
 Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprendizaje por refuerzo (RL).
 
 ## 🔧 Instalación y Configuración
