@@ -98,7 +98,7 @@ func _ready() -> void:
 	hp = hp_max
 
 # ─────────────────────────────────────────────────────────
-# API DE IA
+# API DE IA (godot_rl_agents llama a esto)
 # ─────────────────────────────────────────────────────────
 func apply_ai_action(move: int, jump: bool, dash: bool) -> void:
 	# IA propone movimiento; humano tiene prioridad si pulsa
@@ -212,7 +212,7 @@ func jump(jump_force: float) -> void:
 	squash_stretch(jumpingSquash, jumpingStretch)
 
 # ─────────────────────────────────────────────────────────
-# ESTADOS (igual que tu versión original)
+# ESTADOS
 # ─────────────────────────────────────────────────────────
 func idle_enter_logic() -> void:
 	Anim.play("Idle")
