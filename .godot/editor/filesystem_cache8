@@ -1,22 +1,22 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1763692578
+::res://::1763845993
 Captura de pantalla 2025-05-06 134401.png::CompressedTexture2D::8515894861348936547::1753990307::1762741974::1::::<><>::
 Captura de pantalla 2025-05-06 134410.png::CompressedTexture2D::8646564965153575277::1753990307::1762741974::1::::<><>::
 Captura de pantalla 2025-05-06 134529.png::CompressedTexture2D::7357665728538127979::1753990307::1762741974::1::::<><>::
 Captura de pantalla 2025-05-19 212237.png::CompressedTexture2D::2970800401954682642::1753990307::1762741974::1::::<><>::
 Captura de pantalla 2025-05-22 150003.png::CompressedTexture2D::4023300510437629833::1753990307::1762741974::1::::<><>::
 Captura de pantalla 2025-05-22 150134.png::CompressedTexture2D::562618994922201114::1753990307::1762741974::1::::<><>::
-default_env.tres::Environment::8205607840551836189::1763600304::0::1::::<><>::
+default_env.tres::Environment::8205607840551836189::1763701862::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1753990307::0::1::::<><>::
 icon.png::CompressedTexture2D::2139806099132782540::1753990307::1762741974::1::::<><>::
 README.md::TextFile::-1::1753990307::0::1::::<><>::
 v8a9J5.png::CompressedTexture2D::121018967425789213::1753990307::1762741974::1::::<><>::
 ::res://addons/::1753990307
-::res://addons/godot_rl_agents/::1763600304
+::res://addons/godot_rl_agents/::1763701851
 godot_rl_agents.gd::GDScript::-1::1753990307::0::1::::<>EditorPlugin<>::
 icon.png::CompressedTexture2D::2402340748444989019::1753990307::1762741974::1::::<><>::
 plugin.cfg::TextFile::-1::1753990307::0::1::::<><>::
-sync.gd::GDScript::-1::1763600304::0::1::::<>Node<>::
+sync.gd::GDScript::-1::1763701851::0::1::::<>Node<>::
 ::res://addons/godot_rl_agents/controller/::1753990307
 ai_controller_2d.gd::GDScript::-1::1753990307::0::1::::AIController2D<>Node2D<>::
 ai_controller_3d.gd::GDScript::-1::1753990307::0::1::::AIController3D<>Node3D<>::
@@ -51,20 +51,20 @@ RaycastSensor3D.gd::GDScript::-1::1753990307::0::1::::RayCastSensor3D<>ISensor3D
 RaycastSensor3D.tscn::PackedScene::4755965679510419149::1753990307::0::1::::<><>::res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd
 RGBCameraSensor3D.gd::GDScript::-1::1753990307::0::1::::RGBCameraSensor3D<>Node3D<>::
 RGBCameraSensor3D.tscn::PackedScene::2387917642450167534::1753990307::0::1::::<><>::res://addons/godot_rl_agents/sensors/sensors_3d/RGBCameraSensor3D.gd
-::res://Levels/::1763600304
-ai_controller_2d.gd::GDScript::-1::1763596942::0::1::::AIController2DGoal<>Node2D<>::
+::res://Levels/::1763701862
+ai_controller_2d.gd::GDScript::-1::1763701851::0::1::::AIController2DGoal<>Node2D<>::
 area_2d.gd::GDScript::-1::1762720104::0::1::::GoalArea2D<>Area2D<>::
 area_2d_2.gd::GDScript::-1::1762477474::0::1::::<>Area2D<>::
 checkpoint_area_2d.gd::GDScript::-1::1762477741::0::1::::CheckpointArea2D<>Area2D<>::
 damage_area_2d.gd::GDScript::-1::1763241847::0::1::::GoalArea2D1<>Area2D<>::
-DemoLevel.tscn::PackedScene::5418268296817282777::1763600304::0::1::::<><>::uid://l8t3uqbclgq6::::res://Objects/Player.tscn<>uid://1he6ge6kvp5k::::res://Sprites/TerrainTileSet.png<>res://Levels/ai_controller_2d.gd<>res://Levels/goal_area_2d.gd<>res://Levels/spawn_point.gd<>res://Levels/damage_area_2d.gd<>res://addons/godot_rl_agents/sync.gd
+DemoLevel.tscn::PackedScene::5418268296817282777::1763701862::0::1::::<><>::uid://l8t3uqbclgq6::::res://Objects/Player.tscn<>uid://1he6ge6kvp5k::::res://Sprites/TerrainTileSet.png<>res://Levels/ai_controller_2d.gd<>res://Levels/goal_area_2d.gd<>res://Levels/spawn_point.gd<>res://Levels/damage_area_2d.gd<>res://addons/godot_rl_agents/sync.gd
 goal_area_2d.gd::GDScript::-1::1762918808::0::1::::GoalArea2DCustom<>Area2D<>::
 node_2d.gd::GDScript::-1::1753990307::0::1::::<>Node<>::
 spawn_point.gd::GDScript::-1::1762877491::0::1::::SpawnPoint<>Node2D<>::
 ::res://Objects/::1762877631
 Player.tscn::PackedScene::841406446226650223::1762877631::0::1::::<><>::uid://u2pw7sjoye3f::::res://Sprites/PlayerSpriteSheet.png<>res://Scripts/Player.gd
-::res://Scripts/::1763581131
-Player.gd::GDScript::-1::1763581131::0::1::::<>CharacterBody2D<>::
+::res://Scripts/::1763701851
+Player.gd::GDScript::-1::1763701851::0::1::::<>CharacterBody2D<>::
 ::res://script_templates/::1753990307
 ::res://script_templates/AIController/::1753990307
 controller_template.gd::GDScript::-1::1753990307::0::1::::<>_BASE_<>::

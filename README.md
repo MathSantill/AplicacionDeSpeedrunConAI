@@ -131,3 +131,6 @@ source .venv/bin/activate
 Se recomienda estructurar los datos en formato JSON para facilidad de parsing y flexibilidad.
 
 GitHub + GitHub Actions: para control de versiones, integración continua y automatización del despliegue.
+
+
+a
