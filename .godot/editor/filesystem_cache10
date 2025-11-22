@@ -1,0 +1,74 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1762739869
+Captura de pantalla 2025-05-06 134401.png::CompressedTexture2D::8515894861348936547::1753990307::1759461183::1::::<><><>0<>0<>a5e26a6d2026e1de51a635365333458a<>res://.godot/imported/Captura de pantalla 2025-05-06 134401.png-de5f4e0e40683107ff465e05d7d0625f.ctex::
+Captura de pantalla 2025-05-06 134410.png::CompressedTexture2D::8646564965153575277::1753990307::1759461183::1::::<><><>0<>0<>778f8064897fb730567c0a1ce0ba5a9b<>res://.godot/imported/Captura de pantalla 2025-05-06 134410.png-d10481ba44d9cb06b39e0a9896b3f409.ctex::
+Captura de pantalla 2025-05-06 134529.png::CompressedTexture2D::7357665728538127979::1753990307::1759461183::1::::<><><>0<>0<>50a8b661b848999352bbc212ea97fbd5<>res://.godot/imported/Captura de pantalla 2025-05-06 134529.png-8f4d6655e715638a0580fca2b8c3a34c.ctex::
+Captura de pantalla 2025-05-19 212237.png::CompressedTexture2D::2970800401954682642::1753990307::1759461183::1::::<><><>0<>0<>937253d58b40785ef7577b20a215a5f8<>res://.godot/imported/Captura de pantalla 2025-05-19 212237.png-6c1a87675a1dd579c2d3a14cfb15a659.ctex::
+Captura de pantalla 2025-05-22 150003.png::CompressedTexture2D::4023300510437629833::1753990307::1759461183::1::::<><><>0<>0<>7f900d61008010beb436cec660eba840<>res://.godot/imported/Captura de pantalla 2025-05-22 150003.png-4e357f4406b869a4573e255401f993ee.ctex::
+Captura de pantalla 2025-05-22 150134.png::CompressedTexture2D::562618994922201114::1753990307::1759461183::1::::<><><>0<>0<>6852a2fe13c828b5e43dc47f7f57699a<>res://.godot/imported/Captura de pantalla 2025-05-22 150134.png-613589cf354034c38a5fbe78664cceeb.ctex::
+default_env.tres::Environment::8205607840551836189::1762722564::0::1::::<><><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1753990307::0::1::::<><><>0<>0<><>::
+icon.png::CompressedTexture2D::2139806099132782540::1753990307::1759461183::1::::<><><>0<>0<>fdb060d8b84dc79dee5ffc09167f1652<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
+README.md::TextFile::-1::1753990307::0::1::::<><><>0<>0<><>::
+v8a9J5.png::CompressedTexture2D::121018967425789213::1753990307::1759461183::1::::<><><>0<>0<>20537448922ccee3aaa17306107daa7c<>res://.godot/imported/v8a9J5.png-d33d0622f6459ef3ac2fcdc406cc7c37.ctex::
+::res://addons/::1753990307
+::res://addons/godot_rl_agents/::1762727327
+godot_rl_agents.gd::GDScript::1077117987174316902::1753990307::0::1::::<>EditorPlugin<><>0<>1<><>::
+icon.png::CompressedTexture2D::2402340748444989019::1753990307::1759461182::1::::<><><>0<>0<>a5598d0f7a13b1a09be3836d92cccf28<>res://.godot/imported/icon.png-45a871b53434e556222f5901d598ab34.ctex::
+plugin.cfg::TextFile::-1::1753990307::0::1::::<><><>0<>0<><>::
+sync.gd::GDScript::7023042338444344411::1762727327::0::1::::Sync<>Node<><>0<>0<><>::
+::res://addons/godot_rl_agents/controller/::1753990307
+ai_controller_2d.gd::GDScript::3096307710277579449::1753990307::0::1::::AIController2D<>Node2D<><>0<>0<><>::
+ai_controller_3d.gd::GDScript::7863681520050855834::1753990307::0::1::::AIController3D<>Node3D<><>0<>0<><>::
+::res://addons/godot_rl_agents/onnx/::1753990307
+::res://addons/godot_rl_agents/onnx/csharp/::1753990307
+::res://addons/godot_rl_agents/onnx/csharp/docs/::1753990307
+ONNXInference.xml::TextFile::-1::1753990307::0::1::::<><><>0<>0<><>::
+SessionConfigurator.xml::TextFile::-1::1753990307::0::1::::<><><>0<>0<><>::
+::res://addons/godot_rl_agents/onnx/wrapper/::1753990307
+ONNX_wrapper.gd::GDScript::5028966546415086299::1753990307::0::1::::ONNXModel<>Resource<><>0<>0<><>::
+::res://addons/godot_rl_agents/rewards/::1753990307
+ApproachNodeReward2D.gd::GDScript::983587790911566728::1753990307::0::1::::ApproachNodeReward2D<>RewardFunction2D<><>0<>0<><>::
+ApproachNodeReward3D.gd::GDScript::6970464933054809055::1753990307::0::1::::ApproachNodeReward3D<>RewardFunction3D<><>0<>0<><>::
+RewardFunction2D.gd::GDScript::3709052098778230943::1753990307::0::1::::RewardFunction2D<>Node2D<><>0<>0<><>::
+RewardFunction3D.gd::GDScript::8540753217785689584::1753990307::0::1::::RewardFunction3D<>Node3D<><>0<>0<><>::
+::res://addons/godot_rl_agents/sensors/::1753990307
+::res://addons/godot_rl_agents/sensors/sensors_2d/::1753990307
+ExampleRaycastSensor2D.tscn::PackedScene::7379115361848198558::1753990307::0::1::::<><><>0<>0<><>::res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd
+GridSensor2D.gd::GDScript::3557115783462343044::1753990307::0::1::::GridSensor2D<>ISensor2D<><>0<>1<><>::
+ISensor2D.gd::GDScript::1578540872399655522::1753990307::0::1::::ISensor2D<>Node2D<><>0<>0<><>::
+PositionSensor2D.gd::GDScript::2586024640865906164::1753990307::0::1::::PositionSensor2D<>ISensor2D<><>0<>0<><>::
+RaycastSensor2D.gd::GDScript::2100829980364362271::1753990307::0::1::::RaycastSensor2D<>ISensor2D<><>0<>1<><>::
+RaycastSensor2D.tscn::PackedScene::8396142581556798549::1753990307::0::1::::<><><>0<>0<><>::res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd
+RGBCameraSensor2D.gd::GDScript::138983507356760554::1753990307::0::1::::RGBCameraSensor2D<>Node2D<><>0<>0<><>::
+RGBCameraSensor2D.tscn::PackedScene::2431355459601712546::1753990307::0::1::::<><><>0<>0<><>::res://addons/godot_rl_agents/sensors/sensors_2d/RGBCameraSensor2D.gd
+::res://addons/godot_rl_agents/sensors/sensors_3d/::1753990307
+ExampleRaycastSensor3D.tscn::PackedScene::2991222568667702194::1753990307::0::1::::<><><>0<>0<><>::
+GridSensor3D.gd::GDScript::6762807004966644956::1753990307::0::1::::GridSensor3D<>ISensor3D<><>0<>1<><>::
+ISensor3D.gd::GDScript::8766657557773708602::1753990307::0::1::::ISensor3D<>Node3D<><>0<>0<><>::
+PositionSensor3D.gd::GDScript::1124526783598945700::1753990307::0::1::::PositionSensor3D<>ISensor3D<><>0<>0<><>::
+RaycastSensor3D.gd::GDScript::4558727358324922625::1753990307::0::1::::RayCastSensor3D<>ISensor3D<><>0<>1<><>::
+RaycastSensor3D.tscn::PackedScene::4755965679510419149::1753990307::0::1::::<><><>0<>0<><>::res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd
+RGBCameraSensor3D.gd::GDScript::5892269766012176888::1753990307::0::1::::RGBCameraSensor3D<>Node3D<><>0<>0<><>::
+RGBCameraSensor3D.tscn::PackedScene::2387917642450167534::1753990307::0::1::::<><><>0<>0<><>::res://addons/godot_rl_agents/sensors/sensors_3d/RGBCameraSensor3D.gd
+::res://Levels/::1762720104
+ai_controller_2d.gd::GDScript::460322113081707779::1762720103::0::1::::AIController2DGoal<>Node2D<><>0<>0<><>::
+area_2d.gd::GDScript::4801095730179353770::1762720104::0::1::::GoalArea2D<>Area2D<><>0<>0<><>::
+area_2d_2.gd::GDScript::1909752561735127418::1762477474::0::1::::<>Area2D<><>0<>0<><>::
+checkpoint_area_2d.gd::GDScript::7855219399313542356::1762477741::0::1::::CheckpointArea2D<>Area2D<><>0<>0<><>::
+damage_area_2d.gd::GDScript::4427048596480728122::1762714334::0::1::::DamageArea2D<>Area2D<><>0<>0<><>::
+DemoLevel.tscn::PackedScene::5418268296817282777::1762712558::0::1::::<><><>0<>0<><>::res://Objects/Player.tscn<>uid://1he6ge6kvp5k::::res://Sprites/TerrainTileSet.png<>uid://canxl0c2rykrq::::res://Levels/area_2d.gd<>uid://gs8o5jeohfih::::res://Levels/ai_controller_2d.gd<>uid://duh2fplsyoetl::::res://Levels/spawn_point.gd<>uid://b4cq3xgh4hjx7::::res://Levels/damage_area_2d.gd<>uid://c7caqmkpprpjv::::res://addons/godot_rl_agents/sync.gd
+marker_2d.gd::GDScript::5845502332888261806::1762650584::0::1::::SpawnMarker<>Marker2D<><>0<>0<><>::
+marker_2d_2.gd::GDScript::5087951243595845720::1762658589::0::1::::<>Marker2D<><>0<>0<><>::
+node_2d.gd::GDScript::7813147186156720648::1753990307::0::1::::<>Node<><>0<>0<><>::
+spawn_point.gd::GDScript::8579138661586154257::1762720104::0::1::::SpawnPoint<>Node2D<><>0<>0<><>::
+::res://Objects/::1753990307
+Player.tscn::PackedScene::-1::1753990307::0::1::::<><><>0<>0<><>::res://Sprites/PlayerSpriteSheet.png<>res://Scripts/Player.gd
+::res://Scripts/::1762720104
+Player.gd::GDScript::2748535614400107001::1762720104::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://script_templates/::1753990307
+::res://script_templates/AIController/::1753990307
+controller_template.gd::GDScript::1124047658431170713::1753990307::0::1::::<>_BASE_<><>0<>0<><>::
+::res://Sprites/::1759461183
+PlayerSpriteSheet.png::CompressedTexture2D::1460466823459926797::1753990307::1759461183::1::::<><><>0<>0<>dca8c67c9e2469bd4315643635e4876c<>res://.godot/imported/PlayerSpriteSheet.png-d72a160ece3f69390b8beacc09b7c17e.ctex::
+TerrainTileSet.png::CompressedTexture2D::1839659129191401834::1753990307::1759461183::1::::<><><>0<>0<>49b443578ebcf74961d8befad59a06b6<>res://.godot/imported/TerrainTileSet.png-9fc577442697db87e167065dfbd51cd9.ctex::
