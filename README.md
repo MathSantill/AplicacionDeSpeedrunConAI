@@ -7,29 +7,52 @@
 
 Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprendizaje por refuerzo (RL).
 
-INTRODUCCIÓN
-PLANTEAMIENTO DEL PROBLEMA
+Esta investigación propone el desarrollo de un entorno de videojuego plataformero
+en Godot Engine, diseñado para entrenar un agente de inteligencia artificial (IA)
+mediante aprendizaje por refuerzo (RL) con el fin de optimizar estrategias de
+speedrun (completar niveles en el menor tiempo posible). El proyecto busca
+demostrar la eficacia de algoritmos como DQN (Deep Q-Network) o PPO (Proximal
+Policy Optimization) en la automatización de rutas eficientes, adaptación a
+obstáculos dinámicos y mejora iterativa del rendimiento.
+La necesidad de fomentar el aprendizaje práctico de la inteligencia artificial y el
+desarrollo de videojuegos como herramientas educativas. Al diseñar un entorno
+accesible donde una IA aprenda a completar un juego del genero plataformero, se
+busca demostrar el potencial de estas tecnologías para motivar la enseñanza de la
+programación, promover la innovación en entornos de aprendizaje interactivo y
+acercar el conocimiento técnico a estudiantes y comunidades interesadas en la
+tecnología, reduciendo así la brecha digital.
+Desarrollar un entorno interactivo de videojuego plataformero en Godot Engine y entrenar
+un agente de inteligencia artificial mediante aprendizaje por refuerzo (RL) —utilizando
+algoritmos como PPO o DQN— para optimizar estrategias de speedrun, demostrando su
+capacidad para:
+Automatizar rutas eficientes en tiempo real.
+Adaptarse dinámicamente a obstáculos y mecánicas complejas (ej: saltos precisos, dashes).
+Mejorar iterativamente su rendimiento mediante recompensas basadas en tiempo y
+eficiencia de movimientos.
 
-Los speedruns en videojuegos del género plataformero requieren dominar mecánicas complejas como saltos precisos, sincronización de movimientos y adaptación a obstáculos dinámicos mediante estrategias optimizadas que minimicen el tiempo de completado. Sin embargo, la ejecución manual de estas estrategias por jugadores humanos enfrenta limitaciones significativas:
-Curva de aprendizaje empinada: La maestría en speedruns demanda horas de práctica para internalizar patrones y reducir errores.
-Incapacidad de adaptación en entornos dinámicos: Los obstáculos con comportamientos no deterministas, como enemigos con trayectorias aleatorias, dificultan la optimización manual de rutas.
-Falta de herramientas educativas integradas: Existe una brecha en recursos pedagógicos que combinen el desarrollo de videojuegos con inteligencia artificial (IA) para enseñar aprendizaje por refuerzo (RL) de manera práctica y motivadora.
-Por otro lado, los algoritmos clásicos de aprendizaje por refuerzo (RL) presentan desafíos cuando se aplican a entornos de videojuegos:
-Espacios de acción continuos: Mecánicas como la intensidad variable de los saltos requieren políticas adaptativas.
-Retraso en las recompensas: Las funciones mal diseñadas pueden incentivar soluciones miopes o ineficientes. 
-Falta de generalización: Los agentes entrenados en niveles específicos tienden a sobreajustarse, fallando ante cambios mínimos en las condiciones del entorno.
-Ante estos problemas, el presente proyecto propone desarrollar un sistema integral que combine:
-Un entorno personalizado en Godot Engine, diseñado para desafiar y medir el progreso del agente.
-Un sistema de recompensas densas y penalizaciones que guíen al agente hacia estrategias óptimas.
-Un pipeline de entrenamiento eficiente en tiempo real que permita la adaptabilidad y el aprendizaje autónomo.
+Objetivos Específicos
+Diseñar y desarrollar un videojuego plataformero 2D en Godot Engine
+Implementar mecánicas clave para speedruns (saltos, dashes, plataformas móviles).
 
-JUSTIFICACIÓN
-La inteligencia artificial, y particularmente el aprendizaje por refuerzo, ha demostrado un enorme potencial en la simulación de comportamientos complejos dentro de entornos controlados. No obstante, la mayoría de estos desarrollos se mantienen en entornos cerrados o de difícil acceso educativo.
-Este proyecto busca fomentar el aprendizaje práctico de la IA aplicada a los videojuegos, diseñando un entorno accesible donde una IA aprenda a completar un videojuego plataformero.
-Con ello se pretende:
-Demostrar el potencial educativo del RL para enseñar conceptos de programación y optimización.
-Promover la innovación en entornos interactivos que combinen entretenimiento y ciencia de datos.
-Reducir la brecha digital, acercando herramientas de inteligencia artificial a comunidades estudiantiles y desarrolladores emergentes.
+Programar físicas personalizadas (gravedad, colisiones) y niveles con obstáculos dinámicos.
+Integrar un sistema de comunicación entre Godot y el agente de RL
+Exponer variables estructuradas (posición, velocidad, estado del personaje) mediante una
+API.
+Establecer un protocolo para enviar acciones del agente al juego (ej: movimientos, saltos).
+Implementar y entrenar un agente de RL (PPO o DQN)
+Diseñar una función de recompensa que optimice el tiempo de completado (reward = -
+tiempo).
+Comparar el rendimiento del agente contra estrategias baselines (jugador humano,
+aleatorio).
+Evaluar la adaptabilidad del agente en escenarios no vistos
+Probar su desempeño en niveles con disposiciones de plataformas distintas a las de
+entrenamiento.
+Analizar su respuesta ante obstáculos dinámicos (ej: enemigos con patrones cambiantes).
+Documentar el proceso y resultados
+Cuantificar métricas de éxito (tiempo promedio, tasa de victoria, eficiencia de
+movimientos).
+Generar material educativo que relacione desarrollo de videojuegos con RL para fines
+académicos.
 
 OBJETIVOS
 Objetivo General
@@ -62,7 +85,7 @@ Tasa de generalización (% de éxito en niveles no vistos).
 ### Prerrequisitos
 | Herramienta | Versión mínima | Enlace de descarga |
 |-------------|----------------|-------------------|
-| Godot Engine | 4.2 | [Descargar](https://godotengine.org/download) |
+| Godot Engine | 4.3 | [Descargar](https://godotengine.org/download) |
 | Python | 3.10 | [Instalador](https://www.python.org/downloads/) |
 | Git | 2.30+ | [Instalador](https://git-scm.com/downloads) |
 | VSCode (Opcional) | 1.75+ | [Descargar](https://code.visualstudio.com/) |
