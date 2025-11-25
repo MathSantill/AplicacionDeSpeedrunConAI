@@ -7,28 +7,8 @@
 
 Proyecto de speedrun automatizado con IA integrada en Godot Engine usando aprendizaje por refuerzo (RL).
 
-Esta investigación propone el desarrollo de un entorno de videojuego plataformero
-en Godot Engine, diseñado para entrenar un agente de inteligencia artificial (IA)
-mediante aprendizaje por refuerzo (RL) con el fin de optimizar estrategias de
-speedrun (completar niveles en el menor tiempo posible). El proyecto busca
-demostrar la eficacia de algoritmos como DQN (Deep Q-Network) o PPO (Proximal
-Policy Optimization) en la automatización de rutas eficientes, adaptación a
-obstáculos dinámicos y mejora iterativa del rendimiento.
-La necesidad de fomentar el aprendizaje práctico de la inteligencia artificial y el
-desarrollo de videojuegos como herramientas educativas. Al diseñar un entorno
-accesible donde una IA aprenda a completar un juego del genero plataformero, se
-busca demostrar el potencial de estas tecnologías para motivar la enseñanza de la
-programación, promover la innovación en entornos de aprendizaje interactivo y
-acercar el conocimiento técnico a estudiantes y comunidades interesadas en la
-tecnología, reduciendo así la brecha digital.
-Desarrollar un entorno interactivo de videojuego plataformero en Godot Engine y entrenar
-un agente de inteligencia artificial mediante aprendizaje por refuerzo (RL) —utilizando
-algoritmos como PPO o DQN— para optimizar estrategias de speedrun, demostrando su
-capacidad para:
-Automatizar rutas eficientes en tiempo real.
-Adaptarse dinámicamente a obstáculos y mecánicas complejas (ej: saltos precisos, dashes).
-Mejorar iterativamente su rendimiento mediante recompensas basadas en tiempo y
-eficiencia de movimientos.
+Aplicación de aprendizaje por refuerzo en un entorno de videojuego desarrollado para la simulación de estrategias de speedrun con un agente inteligente
+Es un investigación que propone el desarrollo de un entorno de videojuego plataformero en Godot Engine 4.3, diseñado para entrenar un agente de inteligencia artificial (IA) mediante aprendizaje por refuerzo (RL) con el fin de optimizar estrategias de speedrun (completar el nivel en el menor tiempo posible sin recibir danio). El proyecto busca demostrar la eficacia de algoritmos como PPO (Proximal Policy Optimization) en la automatización de rutas eficientes, adaptación a obstáculos dinámicos, evitar danio y mejora iterativa del rendimiento. La necesidad de fomentar el aprendizaje práctico de la inteligencia artificial y el desarrollo de videojuegos como herramientas educativas. Al diseñar un entorno accesible donde una IA aprenda a completar un juego del genero plataformero, se busca demostrar el potencial de estas tecnologías para motivar la enseñanza de la programación. Desarrollar un entorno interactivo de videojuego plataformero en Godot Engine y entrenar un agente de inteligencia artificial mediante aprendizaje por refuerzo (RL) utilizando algoritmos como PPO para optimizar estrategias de speedrun, demostrando su capacidad para: Automatizar rutas eficientes en tiempo real. Adaptarse dinámicamente a obstáculos y mecánicas complejas (ej: saltos precisos, dashes). Mejorar iterativamente su rendimiento mediante recompensas basadas en tiempo y eficiencia de movimientos. Objetivos Específicos Diseñar y desarrollar un videojuego plataformero 2D en Godot Engine Implementar mecánicas clave para speedruns (saltos, dashes, plataformas móviles). Programar físicas personalizadas (gravedad, colisiones) y niveles con obstáculos dinámicos. Integrar un sistema de comunicación entre Godot y el agente de RL Exponer variables estructuradas (posición, velocidad, estado del personaje) mediante una API. Establecer un protocolo para enviar acciones del agente al juego (ej: movimientos, saltos). Implementar y entrenar un agente de RL, PPO Diseñar una función de recompensa que optimice el tiempo de completado (reward = - tiempo). Comparar el rendimiento del agente contra estrategias baselines (jugador humano, aleatorio). Evaluar la adaptabilidad del agente en escenarios no vistos Probar su desempeño en niveles con disposiciones de plataformas distintas a las de entrenamiento. Analizar su respuesta ante obstáculos dinámicos (ej: enemigos con patrones cambiantes). Cuantificar métricas de éxito (tiempo promedio, tasa de victoria, eficiencia de movimientos).
 
 Objetivos Específicos
 Diseñar y desarrollar un videojuego plataformero 2D en Godot Engine
@@ -39,7 +19,7 @@ Integrar un sistema de comunicación entre Godot y el agente de RL
 Exponer variables estructuradas (posición, velocidad, estado del personaje) mediante una
 API.
 Establecer un protocolo para enviar acciones del agente al juego (ej: movimientos, saltos).
-Implementar y entrenar un agente de RL (PPO o DQN)
+Implementar y entrenar un agente de RL (PPO)
 Diseñar una función de recompensa que optimice el tiempo de completado (reward = -
 tiempo).
 Comparar el rendimiento del agente contra estrategias baselines (jugador humano,
@@ -72,7 +52,7 @@ Estudio de técnicas de speedrun en juegos clásicos (Super Mario Bros, Celeste)
 Análisis de funciones de recompensa utilizadas en optimización temporal (reward shaping, discount factors).
 Fase técnica
 Selección de herramientas:
-Motor de juego: Godot Engine 4.2 por su sistema modular, físicas personalizables y soporte para GDScript.
+Motor de juego: Godot Engine 4.3 por su sistema modular, físicas personalizables y soporte para GDScript.
 Framework de RL: Stable Baselines3 (PPO), equilibrando facilidad de integración y rendimiento.
 Protocolo de comunicación: Socket TCP/IP, con intercambio de variables (posición, velocidad, estado del dash, datos de plataformas móviles).
 Métricas de evaluación:
@@ -90,6 +70,33 @@ Tasa de generalización (% de éxito en niveles no vistos).
 | Git | 2.30+ | [Instalador](https://git-scm.com/downloads) |
 | VSCode (Opcional) | 1.75+ | [Descargar](https://code.visualstudio.com/) |
 
+### 🔄 Configuración del entorno virtual de Python
+```bash
+# Clonar repositorio
+git clone https://github.com/MathSantill/AplicacionDeSpeedrunConAI.git
+cd AplicacionDeSpeedrunConAI
+
+# Crear y activar entorno virtual (Windows)
+python -m venv .venv
+.venv\Scripts\activate
+
+# Crear y activar entorno virtual (Linux/macOS)
+python -m venv .venv
+source .venv/bin/activate
+
+Se recomienda estructurar los datos en formato JSON para facilidad de parsing y flexibilidad.
+
+GitHub + GitHub Actions: para control de versiones, integración continua y automatización del despliegue.
+```
+
+```bash
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+.\rl\Scripts\Activate.ps1
+```
+
+```bash
+py stable_baselines3_example.py --speedup=4 --timesteps=300000
+```
 
 ### Arquitectura Implementada
 Visión General
@@ -107,7 +114,7 @@ Capas de la Arquitectura (en orden de implementación)
 1. Capa de Presentación (Godot Engine)
 Aspecto	Detalle
 Responsabilidad	Renderizado gráfico, interfaz de usuario y física del juego
-Tecnologías	Godot Engine 4.2+, GDScript (81.3%), C# (9.9%)
+Tecnologías	Godot Engine 4.3, GDScript (81.3%), C# (9.9%)
 Ubicación	Sprites/, Levels/, Scripts/Player/
 Estado:	 Completado (100%)
 
@@ -186,21 +193,3 @@ Actualizaciones independientes
 Escalabilidad para nuevos algoritmos RL
 Portabilidad entre proyectos
 Monitoreo granular del rendimiento
-
-### 🔄 Configuración del entorno virtual de Python
-```bash
-# Clonar repositorio
-git clone https://github.com/MathSantill/AplicacionDeSpeedrunConAI.git
-cd AplicacionDeSpeedrunConAI
-
-# Crear y activar entorno virtual (Windows)
-python -m venv .venv
-.venv\Scripts\activate
-
-# Crear y activar entorno virtual (Linux/macOS)
-python -m venv .venv
-source .venv/bin/activate
-
-Se recomienda estructurar los datos en formato JSON para facilidad de parsing y flexibilidad.
-
-GitHub + GitHub Actions: para control de versiones, integración continua y automatización del despliegue.
